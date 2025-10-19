@@ -45,7 +45,7 @@ Item {
                 }
                 CheckBox {
                     id: checkUpdateStartupBox
-                    text: i18n("Notify for update on startup (checked once on github, 5 min after startup)")
+                    text: i18n("Beim Start über Updates informieren (einmalig auf GitHub prüfen, 5 Minuten nach dem Start)")
                 }
             }
         }
