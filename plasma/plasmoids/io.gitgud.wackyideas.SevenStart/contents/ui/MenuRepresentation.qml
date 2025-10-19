@@ -731,7 +731,7 @@ PlasmaCore.Dialog {
 				}
 				Text {
 					id: showingAllProgramsText
-					text: "    All Programs"
+					text: "    Alle Programme"
 					font.pixelSize: 12
 					anchors.left: arrowDirection.right
 					anchors.leftMargin: Kirigami.Units.mediumSpacing
@@ -746,7 +746,7 @@ PlasmaCore.Dialog {
 				}
 				Text {
 					id: showingAllProgramsTextBack
-					text: "    Back"
+					text: "    Zurück"
 					font.pixelSize: 12
 					anchors.left: arrowDirection.right
 					anchors.leftMargin: Kirigami.Units.mediumSpacing
@@ -788,7 +788,7 @@ PlasmaCore.Dialog {
 						anchors.bottomMargin: 2
 						font.italic: true
 						color: searchFieldPlaceholderColor
-						text: i18n(" Search programs and files")
+						text: i18n(" Programme/Dateien durchsuchen")
 						verticalAlignment: Text.AlignVCenter
 						visible: !searching
 						style: Text.Outline
@@ -890,7 +890,7 @@ PlasmaCore.Dialog {
                 }
             },
             State {
-                name: "Searching"; when: searching
+                name: "Suchvorgang..."; when: searching
 
                 PropertyChanges {
 					target: searchView; opacity: (backgroundRect.width === searchView.width ? 1 : 0);
@@ -1232,7 +1232,7 @@ PlasmaCore.Dialog {
 					}
 
 					mainItem: Text {
-						text: i18n("Closes all open programs, shuts down Linux, and then turns off your computer.")
+						text: i18n("Schließt alle offenen Programme, fährt Linux herunter, und schaltet den Computer aus.")
 					}
 				}
 				onFocusChanged: {
@@ -1246,7 +1246,7 @@ PlasmaCore.Dialog {
 
 				Text {
 					id: shutDownText
-					text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Shut down")
+					text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Herunterfahren")
 
 					font.pixelSize: 12
 					color: searching ? shutdownTextColor : PlasmaCore.Theme.textColor

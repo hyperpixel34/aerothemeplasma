@@ -22,9 +22,9 @@ Item {
     property var firstCategory:
     [
         {
-            name: "Home directory",
+            name: "Benutzerordner",
             itemText: Plasmoid.configuration.useFullName ? kuser.fullName : kuser.loginName,
-            description: "Open your personal folder.",
+            description: "Öffnet den persönlichen Ordner.",
             itemIcon: "user-home",
             itemIconFallback: "unknown",
             executableString: StandardPaths.writableLocation(StandardPaths.HomeLocation),
@@ -32,9 +32,9 @@ Item {
             executeProgram: false
         },
         {
-            name: "Documents",
-            itemText: "Documents",
-            description: "Access letters, reports, notes and other kinds of documents.",
+            name: "Dokumente",
+            itemText: "Dokumente",
+            description: "Greift auf Briefe, Berichte, Notizen und andere Dokumente zu.", 
             itemIcon: "library-txt",
             itemIconFallback: "folder-library",
             executableString: StandardPaths.writableLocation(StandardPaths.DocumentsLocation),
@@ -42,9 +42,9 @@ Item {
             executeProgram: false
         },
         {
-            name: "Pictures",
-            itemText: "Pictures",
-            description: "View and organize digital pictures",
+            name: "Bilder",
+            itemText: "Bilder",
+            description: "Zeigt digitale Bilder an und verwaltet Sie.",
             itemIcon: "library-images",
             itemIconFallback: "folder-image",
             executableString: StandardPaths.writableLocation(StandardPaths.PicturesLocation),
@@ -52,9 +52,9 @@ Item {
             executeProgram: false
         },
         {
-            name: "Music",
-            itemText: "Music",
-            description: "Play music and other audio files.",
+            name: "Musik",
+            itemText: "Musik",
+            description: "Gibt Musik und andere Audiodateien wieder.",
             itemIcon: "library-music",
             itemIconFallback: "folder-music",
             executableString: StandardPaths.writableLocation(StandardPaths.MusicLocation),
@@ -64,7 +64,7 @@ Item {
         {
             name: "Videos",
             itemText: "Videos",
-            description: "Watch home movies and other digital videos.",
+            description: "Gibt Filme und andere digitale Videos wieder.", 
             itemIcon: "library-video",
             itemIconFallback: "folder-videos",
             executableString: StandardPaths.writableLocation(StandardPaths.MoviesLocation),
@@ -74,7 +74,7 @@ Item {
         {
             name: "Downloads",
             itemText: "Downloads",
-            description: "Find Internet downloads and links to favorite websites.",
+            description: "Findet Internet Downloads und Links zu Ihren Favouritenwebsites.",
             itemIcon: "folder-download",
             itemIconFallback: "folder-download",
             executableString: StandardPaths.writableLocation(StandardPaths.HomeLocation) + "/Downloads",
@@ -86,9 +86,9 @@ Item {
     property var secondCategory:
     [
         {
-            name: "Games",
-            itemText: "Games",
-            description: "Play and manage games on your computer.",
+            name: "Spiele",
+            itemText: "Spiele",
+            description: "Verwaltet Spiele auf dem Computer.",
             itemIcon: "applications-games",
             itemIconFallback: "folder-games",
             executableString: "applications:///Games/",
@@ -96,8 +96,8 @@ Item {
             executeProgram: false
         },
         {
-            name: "Recent Items",
-            itemText: "Recent Items",
+            name: "Zuletzt verwendet",
+            itemText: "Zuletzt verwendet",
             description: "",
             itemIcon: "document-open-recent",
             itemIconFallback: "folder-documents",
@@ -108,7 +108,7 @@ Item {
         {
             name: "Computer",
             itemText: "Computer",
-            description: "See the disk drives and other hardware connected to your computer.",
+            description: "Zeigt Laufwerke und andere an den Computer angeschlossene Hardware an.",
             itemIcon: "computer",
             itemIconFallback: "unknown",
             executableString: "file:///.",
@@ -116,9 +116,9 @@ Item {
             executeProgram: false
         },
         {
-            name: "Network",
-            itemText: "Network",
-            description: "Access the computers and devices that are on your network.",
+            name: "Netzwerk",
+            itemText: "Netzwerk",
+            description: "Bietet Zugriff auf Computer und Geräte im Netzwerk.",
             itemIcon: "folder-network",
             itemIconFallback: "network-server",
             executableString: "remote:/",
@@ -129,9 +129,9 @@ Item {
     property var thirdCategory:
     [
         {
-            name: "Control Panel",
-			itemText: "Control Panel",
-            description: "Change settings and customize the functionality of your computer.",
+            name: "Systemsteuerung",
+			itemText: "Systemsteuerung",
+            description: "Ändert Einstellungen, und passt die Funktionalität des Computers an.",
 			itemIcon: "preferences-system",
 			itemIconFallback: "preferences-desktop",
 			executableString: "systemsettings",
@@ -139,9 +139,9 @@ Item {
             menuModel: null,
         },
         {
-            name: "Devices and Printers",
-			itemText: "Devices and Printers",
-            description: "View and manage devices, printers and print jobs",
+            name: "Geräte und Drucker",
+			itemText: "Geräte und Drucker",
+            description: "Zeigt Geräte, Drucker und Druckaufträge an und verwaltet sie.",
 			itemIcon: "input_devices_settings",
 			itemIconFallback: "printer",
 			executableString: "systemsettings kcm_printer_manager",
@@ -149,9 +149,9 @@ Item {
             menuModel: null,
         },
         {
-            name: "Default Programs",
-			itemText: "Default Programs",
-            description: "Choose default programs for web browsing, e-mail, playing music, and other activities.",
+            name: "Standardprogramme",
+			itemText: "Standardprogramme",
+            description: "Wählt Standardprogramme für Browsen, E-Mail, Musikwiedergabe und andere Aktivitäten aus.",
 			itemIcon: "preferences-desktop-default-applications",
 			itemIconFallback: "application-x-executable",
 			executableString: "systemsettings kcm_componentchooser",
@@ -159,9 +159,9 @@ Item {
             menuModel: null,
         },
         {
-            name: "Help and Support",
-			itemText: "Help and Support",
-            description: "Find Help topics, tutorials, troubleshooting, and other support services.",
+            name: "Hilfe und Support",
+			itemText: "Hilfe und Support",
+            description: "Sucht Hilfethemen, Lernprogramme, Problembehandlung und andere Supportdienste.",
 			itemIcon: "help-browser",
 			itemIconFallback: "system-help",
 			executableString: "https://develop.kde.org/docs/",
@@ -169,9 +169,9 @@ Item {
             menuModel: null,
         },
         {
-            name: "Run",
-			itemText: "Run...",
-            description: "Opens a program, folder, document, or web site.",
+            name: "Ausführen...",
+			itemText: "Ausführen...",
+            description: "Öffnet ein Programm, einen Ordner, ein Dokument oder eine Website.",
 			itemIcon: "krunner",
 			itemIconFallback: "system-run",
 			executableString: "krunner --replace",

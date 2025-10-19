@@ -85,7 +85,7 @@ Item {
                 var pinAction = {   // Add custom action
                                     icon: "pin",
                                     actionId: "pinToTasks",
-                                    text: unpin ? i18n("Unpin from taskbar") : i18n("Pin to taskbar"),
+                                    text: unpin ? i18n("Von Taskleiste lösen") : i18n("An Taskleiste anheften"),
                                     action: () => {
                                         if(unpin) {
                                             panel.sevenTasksReference.applet.unpinTask(entry);
