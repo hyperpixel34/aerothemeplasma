@@ -285,7 +285,7 @@ PlasmaCore.Dialog {
             var sepHeader = tasksMenu.newSeparator(menuitems);
             sepHeader.menuText = i18n("Media");
             var menuItem = tasksMenu.newMenuItem(menuitems);
-            menuItem.text = i18nc("Play previous track", "Previous Track");
+            menuItem.text = i18nc("Vorherigen Titel abspielen", "Vorheriger Titel");
             menuItem.icon = "media-skip-backward";
             menuItem.enabled = Qt.binding(function() {
                 return playerData.canGoPrevious;
@@ -300,7 +300,7 @@ PlasmaCore.Dialog {
             menuItem.text = Qt.binding(function() {
                 var playing = playerData.playbackStatus === Mpris.PlaybackStatus.Playing;
                 // if CanPause, toggle the menu entry between Play & Pause, otherwise always use Play
-                return playing && playerData.canPause ? i18nc("Pause playback", "Pause") : i18nc("Start playback", "Play");
+                return playing && playerData.canPause ? i18nc("Wiedergabe pausieren", "Pause") : i18nc("Wiedergabe starten", "Start");
             });
             menuItem.icon= Qt.binding(function() {
                 var playing = playerData.playbackStatus === Mpris.PlaybackStatus.Playing;
@@ -320,7 +320,7 @@ PlasmaCore.Dialog {
             });
 
             menuItem = tasksMenu.newMenuItem(menuitems);
-            menuItem.text = i18nc("Play next track", "Next Track");
+            menuItem.text = i18nc("Nächsten Titel abspielen", "Nächster Titel");
             menuItem.icon = "media-skip-forward";
             menuItem.enabled = Qt.binding(function() {
                 return playerData.canGoNext;
@@ -330,7 +330,7 @@ PlasmaCore.Dialog {
             });
 
             menuItem = tasksMenu.newMenuItem(menuitems);
-            menuItem.text = i18nc("Stop playback", "Stop");
+            menuItem.text = i18nc("Wiedergabe stoppen", "Stopp");
             menuItem.icon= "media-playback-stop";
             menuItem.enabled = Qt.binding(function() {
                 return playerData.canStop;
@@ -343,7 +343,7 @@ PlasmaCore.Dialog {
             // it through MPRIS we'll offer a "Quit" option instead of "Close"
             if (!closeWindowItem.visible && playerData.canQuit) {
                 menuItem = tasksMenu.newMenuItem(menuitems);
-                menuItem.text = i18nc("Quit media player app", "Quit");
+                menuItem.text = i18nc("Medienplayer beenden", "Beenden");
                 menuItem.icon= "application-exit";
                 menuItem.visible = Qt.binding(function() {
                     return !closeWindowItem.visible;
@@ -357,7 +357,7 @@ PlasmaCore.Dialog {
             // it through MPRIS we'll offer a "Restore" option
             if (get(atm.IsLauncher) && !startNewInstanceItem.visible && playerData.canRaise) {
                 menuItem = tasksMenu.newMenuItem(menuitems);
-                menuItem.text = i18nc("Open or bring to the front window of media player app", "Restore");
+                menuItem.text = i18nc("Medienplayer-Fenster öffnen oder in den Vordergrund bringen", "Wiederherstellen");
                 menuItem.icon = playerData.iconName;
                 menuItem.visible = Qt.binding(function() {
                     return !startNewInstanceItem.visible;
@@ -380,10 +380,10 @@ PlasmaCore.Dialog {
             });
             muteItem.clicked.connect(function() {
                 tasksMenu.visualParent.toggleMuted();
-                muteItem.text = !muteItem.checked ? "Unmute" : "Mute";
+                muteItem.text = !muteItem.checked ? "Ton an" : "Stumm";
                 muteItem.icon = !muteItem.checked ? "audio-volume-muted" : "audio-volume-high";
             });
-            muteItem.text = muteItem.checked ? "Unmute" : "Mute";
+            muteItem.text = muteItem.checked ? "Ton an" : "Stumm";
             muteItem.icon = muteItem.checked ? "audio-volume-muted" : "audio-volume-high";
             secondaryColumn = true;
         }
@@ -481,7 +481,7 @@ PlasmaCore.Dialog {
 
             TasksMenuItemWrapper {
                 id: launcherToggleAction
-                text: "Pin program to taskbar"
+                text: "Programm an Taskbar anpinnen"
                 icon: "window-pin"
                 visible: visualParent
                 && get(atm.IsLauncher) !== true
@@ -510,7 +510,7 @@ PlasmaCore.Dialog {
                 && Plasmoid.immutability !== PlasmaCore.Types.SystemImmutable
                 && !launcherToggleAction.visible)
 
-                text: i18n("Unpin program from taskbar")
+                text: i18n("Programm von Taskbar lösen")
                 icon: "window-unpin"
                 onClicked: {
                     delayedMenu(150, function() {
@@ -527,7 +527,7 @@ PlasmaCore.Dialog {
 
                 enabled: visualParent && get(atm.IsClosable) === true
 
-                text: get(atm.IsGroupParent) ? "Close all windows" : "Close window"
+                text: get(atm.IsGroupParent) ? "Alle Fenster schließen" : "Fenster schließen"
                 //icon: "window-close" RIP ????-2024......
                 icon: "window-close"
                 // I'M BACK'

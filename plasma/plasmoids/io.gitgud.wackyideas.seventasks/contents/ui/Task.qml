@@ -231,7 +231,7 @@ PlasmaCore.ToolTipArea {
         }
 
         if (model.IsLauncher) {
-            return i18nc("@info:usagetip %1 application name", "Launch %1", model.display)
+            return i18nc("@info:usagetip %1 application name", "%1 ausführen", model.display)
         }
 
         let smartLauncherDescription = "";
@@ -242,22 +242,22 @@ PlasmaCore.ToolTipArea {
                 break; // Use the default description
             case 1: {
                 if (Plasmoid.configuration.showToolTips) {
-                    return `${i18nc("@info:usagetip %1 task name", "Show Task tooltip for %1", model.display)}; ${smartLauncherDescription}`;
+                    return `${i18nc("@info:usagetip %1 task name", "Aufgaben-Tooltip für %1 anzeigen", model.display)}; ${smartLauncherDescription}`;
                 }
                 // fallthrough
             }
             case 2: {
                 if (effectWatcher.registered) {
-                    return `${i18nc("@info:usagetip %1 task name", "Show windows side by side for %1", model.display)}; ${smartLauncherDescription}`;
+                    return `${i18nc("@info:usagetip %1 task name", "Fenster nebeneinander anzeigen für %1", model.display)}; ${smartLauncherDescription}`;
                 }
                 // fallthrough
             }
             default:
-                return `${i18nc("@info:usagetip %1 task name", "Open textual list of windows for %1", model.display)}; ${smartLauncherDescription}`;
+                return `${i18nc("@info:usagetip %1 task name", "Textliste der Fenster für %1", model.display)}; ${smartLauncherDescription}`;
             }
         }
 
-        return `${i18n("Activate %1", model.display)}; ${smartLauncherDescription}`;
+        return `${i18n("%1 aktivieren", model.display)}; ${smartLauncherDescription}`;
     }
     Accessible.role: Accessible.Button
     Accessible.onPressAction: leftTapHandler.leftClick()
@@ -368,7 +368,7 @@ TaskManagerApplet.SmartLauncherItem { }
         PlasmaExtras.MenuItem {
             enabled: model.IsMovable //tasksMenu.get(atm.IsMovable)
 
-            text: i18n("&Move")
+            text: i18n("Verschieben")
             icon: "transform-move"
 
             onClicked: tasksModel.requestMove(modelIndex())
@@ -377,7 +377,7 @@ TaskManagerApplet.SmartLauncherItem { }
         PlasmaExtras.MenuItem {
             enabled: model.IsResizable
 
-            text: i18n("Re&size")
+            text: i18n("Größe ändern")
             icon: "transform-scale"
 
             onClicked: tasksModel.requestResize(modelIndex())
@@ -391,7 +391,7 @@ TaskManagerApplet.SmartLauncherItem { }
             checkable: true
             checked: model.IsMaximized
 
-            text: i18n("Ma&ximize")
+            text: i18n("Maximieren")
             icon: "window-maximize"
 
             onClicked: tasksModel.requestToggleMaximized(modelIndex())
@@ -405,7 +405,7 @@ TaskManagerApplet.SmartLauncherItem { }
             checkable: true
             checked: model.IsMinimized
 
-            text: i18n("Mi&nimize")
+            text: i18n("Minimieren")
             icon: "window-minimize"
 
             onClicked: tasksModel.requestToggleMinimized(modelIndex())
@@ -415,7 +415,7 @@ TaskManagerApplet.SmartLauncherItem { }
             checkable: true
             checked: model.IsKeepAbove
 
-            text: i18n("Keep &Above Others")
+            text: i18n("Über anderen halten")
             icon: "window-keep-above"
 
             onClicked: tasksModel.requestToggleKeepAbove(modelIndex())
@@ -425,7 +425,7 @@ TaskManagerApplet.SmartLauncherItem { }
             checkable: true
             checked: model.IsKeepBelow
 
-            text: i18n("Keep &Below Others")
+            text: i18n("Unterhalb halten")
             icon: "window-keep-below"
 
             onClicked: tasksModel.requestToggleKeepBelow(modelIndex())
@@ -437,7 +437,7 @@ TaskManagerApplet.SmartLauncherItem { }
             checkable: true
             checked: model.IsFullScreen
 
-            text: i18n("&Fullscreen")
+            text: i18n("Vollbild")
             icon: "view-fullscreen"
 
             onClicked: tasksModel.requestToggleFullScreen(modelIndex())
@@ -449,7 +449,7 @@ TaskManagerApplet.SmartLauncherItem { }
             checkable: true
             checked: model.IsShaded
 
-            text: i18n("&Shade")
+            text: i18n("Abdunkeln")
             icon: "window-shade"
 
             onClicked: tasksModel.requestToggleShaded(modelIndex())
@@ -465,7 +465,7 @@ TaskManagerApplet.SmartLauncherItem { }
             checkable: true
             checked: model.IsGroupable
 
-            text: i18n("Allow this program to be grouped")
+            text: i18n("Gruppieren erlauben")
             icon: "view-group"
 
             onClicked: tasksModel.requestToggleGrouping(modelIndex())
@@ -476,7 +476,7 @@ TaskManagerApplet.SmartLauncherItem { }
 
             enabled: model.IsClosable
 
-            text: model.IsGroupParent ? "Close all windows" : "Close window"
+            text: model.IsGroupParent ? "Alle Fenster schließen" : "Fenster schließen"
             icon: "window-close"
 
             onClicked: {
