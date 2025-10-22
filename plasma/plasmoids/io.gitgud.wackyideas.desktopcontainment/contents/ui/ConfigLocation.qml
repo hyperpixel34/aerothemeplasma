@@ -77,23 +77,23 @@ Item {
         RadioButton {
             id: locationDesktop
 
-            Kirigami.FormData.label: i18n("Show:")
+            Kirigami.FormData.label: i18n("Anzeigen:")
 
-            text: i18n("Desktop folder")
+            text: i18n("Desktopordner")
         }
 
         RadioButton {
             id: locationCurrentActivity
             visible: placesModel.activityLinkingEnabled
 
-            text: i18n("Files linked to the current activity")
+            text: i18n("Mit der aktuellen Aktivität verknüpfte Dateien")
         }
 
         RowLayout {
             RadioButton {
                 id: locationPlace
 
-                text: i18n("Places panel item:")
+                text: i18n("Orte-Panel:")
 
                 onCheckedChanged: {
                     locationPlaceValue.enabled = checked;
@@ -126,7 +126,7 @@ Item {
             RadioButton {
                 id: locationCustom
 
-                text: i18n("Custom location:")
+                text: i18n("Benutzerdefinierter Ort:")
             }
 
             TextField {
@@ -134,7 +134,7 @@ Item {
                 enabled: locationCustom.checked
                 Layout.fillWidth: true
 
-                placeholderText: i18n("Type path or URL…")
+                placeholderText: i18n("Pfad oder URL…")
 
                 inputMethodHints: Qt.ImhNoPredictiveText
 
@@ -177,9 +177,9 @@ Item {
             id: labelMode
             visible: titleVisible
 
-            Kirigami.FormData.label: i18n("Title:")
+            Kirigami.FormData.label: i18n("Titel:")
 
-            model: [i18n("None"), i18n("Default"), i18n("Full path"), i18n("Custom title")]
+            model: [i18n("Kein"), i18n("Standard"), i18n("Ganzer Pfad"), i18n("Benutzerdefinierter Titel")]
         }
 
         RowLayout {
@@ -194,7 +194,7 @@ Item {
                 Layout.fillWidth: true
                 enabled: (labelMode.currentIndex === 3)
 
-                placeholderText: i18n("Enter custom title…")
+                placeholderText: i18n("Benutzerdefinierten Titel eingeben…")
             }
         }
     }

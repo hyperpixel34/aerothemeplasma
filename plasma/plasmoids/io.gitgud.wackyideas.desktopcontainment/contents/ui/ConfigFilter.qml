@@ -58,26 +58,26 @@ ColumnLayout {
     Kirigami.FormLayout {
         ComboBox {
             id: filterMode
-            Kirigami.FormData.label: i18n("Files:")
-            model: [i18n("Show all"), i18n("Show matching"), i18n("Hide matching")]
+            Kirigami.FormData.label: i18n("Dateien:")
+            model: [i18n("Alle anzeigen"), i18n("Passende anzeigen"), i18n("Passende ausblenden")]
         }
 
         TextField {
             id: filterPattern
-            Kirigami.FormData.label: i18n("File name pattern:")
+            Kirigami.FormData.label: i18n("Dateinamenmuster:")
             enabled: (filterMode.currentIndex > 0)
             inputMethodHints: Qt.ImhNoPredictiveText
         }
 
         Kirigami.SearchField {
             id: mimeFilter
-            Kirigami.FormData.label: i18n("File types:")
+            Kirigami.FormData.label: i18n("Dateitypen:")
             enabled: (filterMode.currentIndex > 0)
         }
 
         CheckBox {
             id: showHiddenFiles
-            Kirigami.FormData.label: i18n("Show hidden files:")
+            Kirigami.FormData.label: i18n("Versteckte Dateien anzeigen:")
         }
     }
 
@@ -127,8 +127,8 @@ ColumnLayout {
                     clip: true // This removes event handling blocking by the header
                     model: ListModel {
                         Component.onCompleted: {
-                            append({ display: i18n("File Type") });
-                            append({ display: i18n("Description") });
+                            append({ display: i18n("Dateityp") });
+                            append({ display: i18n("Beschreibung") });
                         }
                     }
                     interactive: false
@@ -200,7 +200,7 @@ ColumnLayout {
                 icon.name: "edit-select-all"
                 ToolTip.delay: Kirigami.Units.toolTipDelay
                 ToolTip.visible: (Kirigami.Settings.isMobile ? pressed : hovered) && ToolTip.text.length > 0
-                ToolTip.text: i18n("Select All")
+                ToolTip.text: i18n("Alle auswählen")
                 onClicked: filteredMimeTypesModel.checkFiltered()
             }
 
@@ -210,7 +210,7 @@ ColumnLayout {
                 icon.name: "edit-select-none"
                 ToolTip.delay: Kirigami.Units.toolTipDelay
                 ToolTip.visible: (Kirigami.Settings.isMobile ? pressed : hovered) && ToolTip.text.length > 0
-                ToolTip.text: i18n("Deselect All")
+                ToolTip.text: i18n("Alle abwählen")
                 onClicked: filteredMimeTypesModel.uncheckFiltered()
             }
 
@@ -219,7 +219,7 @@ ColumnLayout {
                 icon.name: filteredMimeTypesModel.sortOrder === Qt.AscendingOrder ? "view-sort-ascending-symbolic" : "view-sort-descending-symbolic"
                 ToolTip.delay: Kirigami.Units.toolTipDelay
                 ToolTip.visible: (Kirigami.Settings.isMobile ? pressed : hovered) && ToolTip.text.length > 0
-                ToolTip.text: i18n("Switch Sort Order")
+                ToolTip.text: i18n("Sortierreihenfolge ändern")
                 onClicked: {
                     filteredMimeTypesModel.sortOrder = filteredMimeTypesModel.sortOrder === Qt.AscendingOrder ? Qt.DescendingOrder : Qt.AscendingOrder;
                     filteredMimeTypesModel.sort(0, filteredMimeTypesModel.sortOrder);

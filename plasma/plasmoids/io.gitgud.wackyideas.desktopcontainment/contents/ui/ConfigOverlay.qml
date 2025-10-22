@@ -83,7 +83,7 @@ ContainmentLayoutManager.ConfigOverlayWithHandles {
             ActionButton {
                 id: rotateButton
                 icon.name: "object-rotate-left-symbolic"
-                toolTip: !rotateHandle.pressed ? i18n("Click and drag to rotate") : ""
+                toolTip: !rotateHandle.pressed ? i18n("Klicken und ziehen zum rotieren") : ""
                 action: applet ? applet.plasmoid.internalAction("rotate") : null
                 down: rotateHandle.pressed
                 Component.onCompleted: {
@@ -171,7 +171,7 @@ ContainmentLayoutManager.ConfigOverlayWithHandles {
                 // FIXME: missing from Breeze icons! See
                 // https://bugs.kde.org/show_bug.cgi?id=472863.
                 icon.name: "showbackground"
-                toolTip: checked ? i18n("Hide Background") : i18n("Show Background")
+                toolTip: checked ? i18n("Hintergrund ausblenden") : i18n("Hintergrund anzeigen")
                 visible: (applet.plasmoid.backgroundHints & PlasmaCore.Types.ConfigurableBackground)
                 checked: applet.plasmoid.effectiveBackgroundHints & PlasmaCore.Types.StandardBackground || applet.plasmoid.effectiveBackgroundHints & PlasmaCore.Types.TranslucentBackground
                 checkable: true
@@ -219,7 +219,7 @@ ContainmentLayoutManager.ConfigOverlayWithHandles {
             ActionButton {
                 id: closeButton
                 icon.name: "edit-delete-remove"
-                toolTip: i18n("Remove")
+                toolTip: i18n("Entfernen")
                 visible: {
                     if (!applet) {
                         return false;

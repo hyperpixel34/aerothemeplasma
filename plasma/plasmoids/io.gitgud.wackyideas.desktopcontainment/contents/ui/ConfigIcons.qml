@@ -71,13 +71,13 @@ Item {
             spacing: Kirigami.Units.smallSpacing
             visible: isPopup
 
-            Kirigami.FormData.label: i18n("Panel button:")
+            Kirigami.FormData.label: i18n("Panel-Button:")
 
             CheckBox {
                 id: useCustomIcon
                 visible: isPopup
                 checked: cfg_useCustomIcon
-                text: i18n("Use a custom icon")
+                text: i18n("Benutzerdefiniertes Icon verwenden")
             }
 
             Button {
@@ -110,13 +110,13 @@ Item {
                 visualParent: iconButton
 
                 PlasmaExtras.MenuItem {
-                    text: i18nc("@item:inmenu Open icon chooser dialog", "Choose…")
+                    text: i18nc("@item:inmenu Symbolauswahldialog öffnen", "Auswählen…")
                     icon: "document-open-folder"
                     onClicked: iconDialog.open()
                 }
 
                 PlasmaExtras.MenuItem {
-                    text: i18nc("@item:inmenu Reset icon to default", "Clear Icon")
+                    text: i18nc("@item:inmenu Icon zum Standard zurücksetzen", "Icon löschen")
                     icon: "edit-clear"
                     onClicked: cfg_icon = "folder-symbolic";
                 }
@@ -136,13 +136,13 @@ Item {
             Layout.fillWidth: true
             visible: !isPopup || viewMode.currentIndex === 1 /* Icons mode */
 
-            Kirigami.FormData.label: i18n("Arrangement:")
+            Kirigami.FormData.label: i18n("Anordnung:")
 
             model: [
                 Qt.application.layoutDirection === Qt.LeftToRight ?
-                    i18nc("@item:inlistbox arrangement of icons", "Left to Right") :
-                    i18nc("@item:inlistbox arrangement of icons", "Right to Left"),
-                i18nc("@item:inlistbox arrangement of icons", "Top to Bottom"),
+                    i18nc("@item:inlistbox Anordnung der Icons", "Links nach Rechts") :
+                    i18nc("@item:inlistbox Anordnung der Icons", "Rechts nach links"),
+                i18nc("@item:inlistbox Anordnung der Icons", "Oben nach Unten"),
             ]
         }
 
@@ -151,8 +151,8 @@ Item {
             Layout.fillWidth: true
             visible: !isPopup || viewMode.currentIndex === 1 /* Icons mode */
 
-            model: [i18nc("@item:inlistbox alignment of icons", "Align left"),
-                    i18nc("@item:inlistbox alignment of icons", "Align right")]
+            model: [i18nc("@item:inlistbox Anordnung der Icons", "Links anordnen"),
+                    i18nc("@item:inlistbox Anordnung der Icons", "Rechts anordnen")]
         }
 
         CheckBox {
@@ -167,7 +167,7 @@ Item {
                 }
             }
 
-            text: i18n("Lock in place")
+            text: i18n("Festsetzen")
         }
 
         Item {
@@ -181,7 +181,7 @@ Item {
             id: sortMode
             Layout.fillWidth: true
 
-            Kirigami.FormData.label: i18n("Sorting:")
+            Kirigami.FormData.label: i18n("Sortierung:")
 
             property int mode
             // FIXME TODO HACK: This maps the combo box list model to the KDirModel::ModelColumns
@@ -189,11 +189,11 @@ Item {
             property var indexToMode: [-1, 0, 1, 6, 2]
             property var modeToIndex: {'-1': '0', '0': '1', '1': '2', '6': '3', '2': '4'}
 
-            model: [i18nc("@item:inlistbox sort icons manually", "Manual"),
-                    i18nc("@item:inlistbox sort icons by name", "Name"),
-                    i18nc("@item:inlistbox sort icons by size", "Size"),
-                    i18nc("@item:inlistbox sort icons by file type", "Type"),
-                    i18nc("@item:inlistbox sort icons by date", "Date")]
+            model: [i18nc("@item:inlistbox Sortiert Icons manuell", "Manuell"),
+                    i18nc("@item:inlistbox Sortiert Icons nach Name", "Name"),
+                    i18nc("@item:inlistbox Sortiert Icons nach Größe", "Größe"),
+                    i18nc("@item:inlistbox Sortiert Icons nach Dateityp", "Typ"),
+                    i18nc("@item:inlistbox Sortiert Icons nach Datum", "Datum")]
 
             Component.onCompleted: currentIndex = modeToIndex[mode]
             onActivated: mode = indexToMode[index]
@@ -204,7 +204,7 @@ Item {
 
             enabled: sortMode.currentIndex !== 0
 
-            text: i18nc("@option:check sort icons in descending order", "Descending")
+            text: i18nc("@option:check Sortiert Icons absteigend", "Absteigend")
         }
 
         CheckBox {
@@ -212,7 +212,7 @@ Item {
 
             enabled: sortMode.currentIndex !== 0
 
-            text: i18nc("@option:check sort icons with folders first", "Folders first")
+            text: i18nc("@option:check Sortiert Icons mit Ordnern zuerst", "Ordner zuerst")
         }
 
         Item {
@@ -226,10 +226,10 @@ Item {
             visible: isPopup
             Layout.fillWidth: true
 
-            Kirigami.FormData.label: i18nc("whether to use icon or list view", "View mode:")
+            Kirigami.FormData.label: i18nc("Ansicht ändern", "Ansicht:")
 
-            model: [i18nc("@item:inlistbox show icons in a list", "List"),
-                    i18nc("@item:inlistbox show icons in a grid", "Grid")]
+            model: [i18nc("@item:inlistbox Zeigt Icons in einer Liste", "Liste"),
+                    i18nc("@item:inlistbox Zeigt Icons in einem Raster", "Raster")]
         }
 
 
@@ -240,7 +240,7 @@ Item {
             Layout.fillWidth: true
             visible: !isPopup || viewMode.currentIndex === 1 /* Icons mode */
 
-            Kirigami.FormData.label: i18n("Icon size:")
+            Kirigami.FormData.label: i18n("Icongröße:")
 
             from: 0
             to: 6
@@ -255,7 +255,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft
                 visible: !isPopup || viewMode.currentIndex === 1 /* Icons mode */
 
-                text: i18nc("@label:slider smallest icon size", "Small")
+                text: i18nc("@label:slider Kleinste Icongröße", "Klein")
             }
             Item {
                 Layout.fillWidth: true
@@ -264,7 +264,7 @@ Item {
                 Layout.alignment: Qt.AlignRight
                 visible: !isPopup || viewMode.currentIndex === 1 /* Icons mode */
 
-                text: i18nc("@label:slider largest icon size", "Large")
+                text: i18nc("@label:slider Größte Icongröße", "Groß")
             }
         }
 
@@ -273,12 +273,12 @@ Item {
             visible: !isPopup || viewMode.currentIndex === 1 /* Icons mode */
             Layout.fillWidth: true
 
-            Kirigami.FormData.label: i18n("Label width:")
+            Kirigami.FormData.label: i18n("Beschriftungsbreite:")
 
             model: [
-                i18nc("@item:inlistbox how long a text label should be", "Narrow"),
-                i18nc("@item:inlistbox how long a text label should be", "Medium"),
-                i18nc("@item:inlistbox how long a text label should be", "Wide"),
+                i18nc("@item:inlistbox how long a text label should be", "Klein"),
+                i18nc("@item:inlistbox how long a text label should be", "Mittel"),
+                i18nc("@item:inlistbox how long a text label should be", "Breit"),
             ]
         }
 
@@ -286,7 +286,7 @@ Item {
             id: textLines
             visible: !isPopup || viewMode.currentIndex === 1 /* Icons mode */
 
-            Kirigami.FormData.label: i18n("Text lines:")
+            Kirigami.FormData.label: i18n("Textzeilen:")
 
             from: 1
             to: 10
@@ -302,23 +302,23 @@ Item {
         CheckBox {
             id: toolTips
 
-            Kirigami.FormData.label: i18n("When hovering over icons:")
+            Kirigami.FormData.label: i18n("Beim hovern über Icons:")
 
-            text: i18n("Show tooltips")
+            text: i18n("Tooltips anzeigen")
         }
 
         CheckBox {
             id: selectionMarkers
             visible: Qt.styleHints.singleClickActivation
 
-            text: i18n("Show selection markers")
+            text: i18n("Auswahlmarkierungen anzeigen")
         }
 
         CheckBox {
             id: popups
             visible: !isPopup
 
-            text: i18n("Show folder preview popups")
+            text: i18n("Ordnervorschau-Popups anzeigen")
         }
 
         Item {
@@ -328,11 +328,11 @@ Item {
         CheckBox {
             id: renameInline
 
-            Kirigami.FormData.label: i18n("Rename:")
+            Kirigami.FormData.label: i18n("Umbenennen:")
 
             visible: !selectionMarkers.visible
 
-            text: i18n("Rename inline by clicking selected item's text")
+            text: i18n("Inline umbenennen, indem Sie auf den Text des ausgewählten Elements klicken")
         }
 
         Item {
@@ -342,11 +342,11 @@ Item {
 
         CheckBox {
             id: textShadows
-            text: i18n("Use drop shadows for icon labels on the desktop")
+            text: i18n("Verwenden Sie Schlagschatten für Symbolbeschriftungen auf dem Desktop")
         }
         CheckBox {
             id: iconShadows
-            text: i18n("Use drop shadows for icons on the desktop")
+            text: i18n("Verwenden Sie Schlagschatten für Symbole auf dem Desktop")
         }
 
         ComboBox {
@@ -354,20 +354,20 @@ Item {
             visible: !isPopup
             Layout.fillWidth: true
 
-            Kirigami.FormData.label: i18n("Selection style:")
+            Kirigami.FormData.label: i18n("Auswahlstil:")
 
             model: [
-                i18nc("@item:inlistbox how the selection should be", "Plasma style"),
-                i18nc("@item:inlistbox how the selection should be", "Classic"),
+                i18nc("@item:inlistbox how the selection should be", "Plasma-Stil"),
+                i18nc("@item:inlistbox how the selection should be", "Klassisch"),
             ]
         }
 
         CheckBox {
             id: previews
 
-            Kirigami.FormData.label: i18n("Previews:")
+            Kirigami.FormData.label: i18n("Vorschau:")
 
-            text: i18n("Show preview thumbnails")
+            text: i18n("Vorschau anzeigen")
         }
 
         Button {
@@ -375,7 +375,7 @@ Item {
             Layout.fillWidth: true
 
             icon.name: "configure"
-            text: i18n("Configure Preview Plugins…")
+            text: i18n("Preview Plugins konfigurieren…")
 
             onClicked: {
                 const component = Qt.createComponent(Qt.resolvedUrl("FolderItemPreviewPluginsDialog.qml"));
