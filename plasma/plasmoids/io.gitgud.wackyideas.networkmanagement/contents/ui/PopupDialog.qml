@@ -58,13 +58,13 @@ PlasmaExtras.Representation {
         target: full.nmHandler
         function onWifiCodeReceived(data, ssid) {
             if (data.length === 0) {
-                console.error("Cannot create QR code component: Unsupported connection");
+                console.error("Fehler beim Erstellen der QR-Code-Komponente: Nicht unterstützte Verbindung");
                 return;
             }
 
             const showQRComponent = Qt.createComponent("ShareNetworkQrCodePage.qml");
             if (showQRComponent.status === Component.Error) {
-                console.warn("Cannot create QR code component:", showQRComponent.errorString());
+                console.warn("Fehler beim Erstellen der QR-Code-Komponente:", showQRComponent.errorString());
                 return;
             }
 

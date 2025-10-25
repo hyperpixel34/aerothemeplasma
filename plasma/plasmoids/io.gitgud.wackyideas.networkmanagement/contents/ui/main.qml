@@ -69,8 +69,8 @@ PlasmoidItem {
         || Plasmoid.location === PlasmaCore.Types.LeftEdge)
     property alias planeModeSwitchAction: planeAction
 
-    Plasmoid.title: "Open Network and Sharing Center"
-    toolTipMainText: i18n("Networks")
+    Plasmoid.title: "Netzwerk- und Freigabecenter öffnen"
+    toolTipMainText: i18n("Netzwerke")
     toolTipSubText: {
         const activeConnections = networkStatus.activeConnections;
 
@@ -79,9 +79,9 @@ PlasmoidItem {
         }
 
         if (PlasmaNM.Configuration.airplaneModeEnabled) {
-            return i18nc("@info:tooltip", "Middle-click to turn off Airplane Mode");
+            return i18nc("@info:tooltip", "Mausrad zum Deaktivieren des Flugmodus");
         } else {
-            const hint = i18nc("@info:tooltip", "Middle-click to turn on Airplane Mode");
+            const hint = i18nc("@info:tooltip", "Mausrad zum Aktivieren des Flugmodus");
             return activeConnections ? `${activeConnections}\n${hint}` : hint;
         }
     }
@@ -114,7 +114,7 @@ PlasmoidItem {
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
-            text: i18n("Enable Wi-Fi")
+            text: i18n("Drahtlosnetzwerk aktivieren")
             icon.name: "network-wireless-on"
             priority: PlasmaCore.Action.LowPriority
             checkable: true
@@ -125,7 +125,7 @@ PlasmoidItem {
             onTriggered: checked => {handler.enableWireless(checked)}
         },
         PlasmaCore.Action {
-            text: i18n("Enable Mobile Network")
+            text: i18n("Mobilfunk aktivieren")
             icon.name: "network-mobile-on"
             priority: PlasmaCore.Action.LowPriority
             checkable: true
@@ -137,7 +137,7 @@ PlasmoidItem {
         },
         PlasmaCore.Action {
             id: planeAction
-            text: i18n("Enable Airplane Mode")
+            text: i18n("Flugmodus aktivieren")
             icon.name: "network-flightmode-on"
             priority: PlasmaCore.Action.LowPriority
             checkable: true
@@ -170,7 +170,7 @@ PlasmoidItem {
 
         },
         PlasmaCore.Action {
-            text: i18n("Open Network Login Page…")
+            text: i18n("Netzwerk-Anmeldeseite öffnen…")
             icon.name: "network-flightmode-on"
             priority: PlasmaCore.Action.LowPriority
             visible: networkStatus.connectivity === NMQt.NetworkManager.Portal
@@ -181,7 +181,7 @@ PlasmoidItem {
 
     PlasmaCore.Action {
         id: configureAction
-        text: i18n("&Configure Network Connections…")
+        text: i18n("&Netzwerkverbindungen konfigurieren…")
         icon.name: "configure"
         visible: kcmAuthorized
         shortcut: "alt+d, s"

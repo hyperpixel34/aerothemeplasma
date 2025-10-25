@@ -139,7 +139,7 @@ ColumnLayout {
             KeyNavigation.left: wwanSwitchButton.visible ? wwanSwitchButton : wwanSwitchButton.KeyNavigation.left
             KeyNavigation.right: searchTextField
 
-            text: i18n("Airplane mode")
+            text: i18n("Flugmodus")
             onToggled: {
                 handler.enableAirplaneMode(checked);
                 PlasmaNM.Configuration.airplaneModeEnabled = checked;
@@ -230,7 +230,7 @@ ColumnLayout {
         icon.name: "configure"
 
         PlasmaComponents3.ToolTip {
-            text: i18n("Configure network connections…")
+            text: i18n("Netzwerkverbindungen konfigurieren…")
         }
 
         onClicked: {
