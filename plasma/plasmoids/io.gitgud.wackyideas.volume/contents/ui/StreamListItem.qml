@@ -23,7 +23,7 @@ ListItemBase {
         if (model.Name) {
             return model.Name;
         }
-        return i18n("Stream name not found");
+        return i18n("Stream nicht gefunden");
     }
 
     iconName: {

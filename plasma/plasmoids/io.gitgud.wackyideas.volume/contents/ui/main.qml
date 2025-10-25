@@ -33,7 +33,7 @@ PlasmoidItem {
 
     property bool volumeFeedback: config.audioFeedback
     property bool globalMute: config.globalMute
-    property string displayName: i18n("Audio Volume")
+    property string displayName: i18n("Lautstärke")
     property QtObject draggedStream: null
     property QtObject mixerWindow: null
 
@@ -41,7 +41,7 @@ PlasmoidItem {
 
     // DEFAULT_SINK_NAME in module-always-sink.c
     readonly property string dummyOutputName: "auto_null"
-    readonly property string noDevicePlaceholderMessage: i18n("No output or input devices found")
+    readonly property string noDevicePlaceholderMessage: i18n("Keine Eingabe- bzw. Ausgabegeräte erkannt")
 
     switchHeight: Layout.minimumHeight
     switchWidth: Layout.minimumWidth
@@ -56,9 +56,9 @@ PlasmoidItem {
         }
 
         if (sink.muted) {
-            return i18n("Volume: Muted");
+            return i18n("Lautsprecher: Ton aus");
         } else {
-            return i18n("Volume: %1%", volumePercent(sink.volume));
+            return i18n("Lautsprecher: %1%", volumePercent(sink.volume));
         }
     }
     toolTipSubText: {
@@ -69,9 +69,9 @@ PlasmoidItem {
         }
 
         if (paSinkFilterModel.count > 0) {
-            lines.push(main.globalMute ? i18n("Middle-click to unmute")
-            : i18n("Middle-click to mute all audio"));
-            lines.push(i18n("Scroll to adjust volume"));
+            lines.push(main.globalMute ? i18n("Mausrad zum einschalten")
+            : i18n("Mausrad zum Stummschalten"));
+            lines.push(i18n("Scrollen zum Einstellen der Lautstärke"));
         } else {
             lines.push(main.noDevicePlaceholderMessage);
         }
@@ -92,7 +92,7 @@ PlasmoidItem {
             return pulseObject.name
         }
 
-        return i18n("Device name not found")
+        return i18n("Gerätename nicht gefunden")
     }
 
     function isDummyOutput(output) {
@@ -344,14 +344,14 @@ PlasmoidItem {
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
-            text: i18n("Open Volume Mixer")
+            text: i18n("Lautstärkemixer öffnen")
             onTriggered: {
                 mixerWindow = Qt.createQmlObject("MixerWindow {}", main);
                 mixerWindow.visible = true;
             }
         },
         PlasmaCore.Action {
-            text: i18n("Raise maximum volume")
+            text: i18n("Maximale Lautstärke")
             checkable: true
             checked: config.raiseMaximumVolume
             onTriggered: {
@@ -369,7 +369,7 @@ PlasmoidItem {
             }
         },
         PlasmaCore.Action {
-            text: i18n("Show virtual devices")
+            text: i18n("Virtuelle Geräte anzeigen")
             icon.name: "audio-card"
             checkable: true
             checked: plasmoid.configuration.showVirtualDevices
@@ -377,7 +377,7 @@ PlasmoidItem {
         },
         PlasmaCore.Action {     // Move this here so that the action stays visible, thus retaining functionality, you should probably change these somewhat closer to what Win 7 and Vista have here
             id: configureAction
-            text: i18n("&Configure Audio Devices…")
+            text: i18n("&Audiogeräte konfigurieren…")
             icon.name: "configure"
             visible: KConfig.KAuthorized.authorizeControlModule("kcm_pulseaudio")
             onTriggered: KCMUtils.KCMLauncher.openSystemSettings("kcm_pulseaudio")

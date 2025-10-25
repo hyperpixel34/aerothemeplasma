@@ -140,7 +140,7 @@ Item {
             Layout.maximumWidth: !isMixer ? 48 : undefined
 
             text: Plasmoid.configuration.showDeviceName ? name
-                  : (type == "sink-output" ? "Speakers" : (type == "sink-input" ? "Microphone" : item.name))
+                  : (type == "sink-output" ? "Lautsprecher" : (type == "sink-input" ? "Mikrofon" : item.name))
             elide: Text.ElideRight
             wrapMode: Text.WordWrap
             verticalAlignment: Text.AlignTop
@@ -330,7 +330,7 @@ Item {
 
                     anchors.fill: parent
                     interactive: false
-                    mainText: (muteButton.isMuted ? "Unmute" : "Mute") + " " + (item.type == "sink-output" ? "Speakers" : (item.type == "sink-input" ? "Microphone" : item.name))
+                    mainText: (item.type == "sink-output" ? "Lautsprecher" : (item.type == "sink-input" ? "Mikrofon" : item.name)) + " " + (muteButton.isMuted ? "einschalten" : "stummschalten")
                 }
             }
             KSvg.SvgItem {
