@@ -120,13 +120,13 @@ PlasmoidItem {
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
-            text: i18n("Datum und Uhrzeit ändern…")
+            text: i18n("Adjust Date and Time…")
             icon.name: "clock"
             visible: KAuthorized.authorize("kcm_clock")
             onTriggered: KCMLauncher.openSystemSettings("kcm_clock")
         },
         PlasmaCore.Action {
-            text: i18n("Datumsformat einstellen…")
+            text: i18n("Set Time Format…")
             icon.name: "gnumeric-format-thousand-separator"
             visible: KAuthorized.authorizeControlModule("kcm_regionandlang")
             onTriggered: KCMLauncher.openSystemSettings("kcm_regionandlang")

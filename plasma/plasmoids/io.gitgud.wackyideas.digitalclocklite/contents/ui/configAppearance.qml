@@ -71,7 +71,7 @@ SimpleKCM {
         id: fontsModel
         Component.onCompleted: {
             var arr = [] // use temp array to avoid constant binding stuff
-            arr.push({text: i18nc("Standardschriftart verwenden", "Standard"), value: ""})
+            arr.push({text: i18nc("Use default font", "Default"), value: ""})
 
             var fonts = Qt.fontFamilies()
             var foundIndex = 0
@@ -86,7 +86,7 @@ SimpleKCM {
         id: fontSizesModel
         Component.onCompleted: {
             var arr = [] // use temp array to avoid constant binding stuff
-            arr.push({text: i18n("Standardschriftartgröße verwenden"), value: ""})
+            arr.push({text: i18n("Use default font size"), value: ""})
 
             var sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '26', '28', '36', '48', '72']
             for (var i = 0, j = sizes.length; i < j; ++i) {
@@ -101,13 +101,13 @@ SimpleKCM {
 
         CustomGroupBox {
             QtLayouts.Layout.fillWidth: true
-            title: i18n("Informationen")
+            title: i18n("Information")
             //flat: true
 
             QtLayouts.ColumnLayout {
                 QtControls.CheckBox {
                     id: showDate
-                    text: i18n("Datum anzeigen")
+                    text: i18n("Show date")
                 }
                 QtControls.CheckBox {
                     id: shortTaskbarHideDate
@@ -116,11 +116,11 @@ SimpleKCM {
 
                 QtControls.CheckBox {
                     id: showSeconds
-                    text: i18n("Sekunden anzeigen")
+                    text: i18n("Show seconds")
                 }
                 QtControls.CheckBox {
                     id: showPinButton
-                    text: i18n("Pin-Button anzeigen")
+                    text: i18n("Show pin button")
                 }
 
                 QtControls.CheckBox {
@@ -130,7 +130,7 @@ SimpleKCM {
 
                 QtControls.CheckBox {
                     id: showLocalTimezone
-                    text: i18n("Zeitzone anzeigen")
+                    text: i18n("Show local time zone")
                 }
 
                 /*QtControls.Label {
@@ -152,13 +152,13 @@ SimpleKCM {
 
                         QtControls.RadioButton {
                             id: timezoneCityRadio
-                            text: i18n("Zeitzonenstadt")
+                            text: i18n("Time zone city")
                             //exclusiveGroup: timezoneDisplayType
                         }
 
                         QtControls.RadioButton {
                             id: timezoneCodeRadio
-                            text: i18n("Zeitzonencode")
+                            text: i18n("Time zone code")
                             //exclusiveGroup: timezoneDisplayType
                         }
                     }
@@ -166,7 +166,7 @@ SimpleKCM {
 
                 QtLayouts.RowLayout {
                     QtControls.Label {
-                        text: i18n("Datumsformat:")
+                        text: i18n("Date format:")
                     }
 
                     QtControls.ComboBox {
@@ -175,19 +175,19 @@ SimpleKCM {
                         textRole: "label"
                         model: [
                             {
-                                'label': i18n("Langes Datum"),
+                                'label': i18n("Long Date"),
                                 'name': "longDate"
                             },
                             {
-                                'label': i18n("Kurzes Datum"),
+                                'label': i18n("Short Date"),
                                 'name': "shortDate"
                             },
                             {
-                                'label': i18n("ISO Datum"),
+                                'label': i18n("ISO Date"),
                                 'name': "isoDate"
                             },
                             {
-                                'label': i18n("Benutzerdefiniertes Datum"),
+                                'label': i18n("Custom Date"),
                                 'name': "customDate"
                             }
                         ]
@@ -229,7 +229,7 @@ SimpleKCM {
             QtLayouts.Layout.fillWidth: true
             
             QtControls.Label {
-                text: i18n("  Schriftart px: ")
+                text: i18n("  Font size px: ")
             }
             
             QtControls.ComboBox {
@@ -255,7 +255,7 @@ SimpleKCM {
             QtLayouts.Layout.fillWidth: true
 
             QtControls.Label {
-                text: i18n("  Schriftart:")
+                text: i18n("  Font style:")
             }
             
 

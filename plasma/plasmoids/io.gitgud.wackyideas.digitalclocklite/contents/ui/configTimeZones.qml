@@ -27,7 +27,7 @@ KCMUtils.ScrollViewKCM {
 
         onSelectedTimeZonesChanged: {
             if (selectedTimeZones.length === 0) {
-                // Verhindern, dass alle Zeitzonen entfernt werden
+                // Don't let the user remove all time zones
                 messageWidget.visible = true;
                 timeZones.selectLocalTimeZone();
             }
@@ -39,22 +39,23 @@ KCMUtils.ScrollViewKCM {
 
         QQC2.Label {
             Layout.fillWidth: true
-            text: i18n("Tipp: Wenn Sie häufig reisen, fügen Sie bitte Ihre Heimatzeitzone dieser Liste hinzu. Sie wird nur angezeigt, wenn Sie die systemweite Zeitzone ändern.")
+            text: i18n("Tip: if you travel frequently, add your home time zone to this list. It will only appear when you change the systemwide time zone to something else.")
             wrapMode: Text.Wrap
         }
     }
 
     view: ListView {
         id: configuredTimezoneList
-        clip: true
-        focus: true
-        activeFocusOnTab: true
+        clip: true // Avoid visual glitches
+        focus: true // keyboard navigation
+        activeFocusOnTab: true // keyboard navigation
 
         model: TimeZoneFilterProxy {
             sourceModel: timeZones
             onlyShowChecked: true
         }
-
+        // We have no concept of selection in this list, so don't pre-select
+        // the first item
         currentIndex: -1
 
         delegate: Kirigami.RadioSubtitleDelegate {
@@ -67,15 +68,16 @@ KCMUtils.ScrollViewKCM {
 
             font.bold: isCurrent
 
+            // Stripes help the eye line up the text on the left and the button on the right
             Kirigami.Theme.useAlternateBackgroundColor: true
 
             text: model.city
             subtitle: {
                 if (configuredTimezoneList.count > 1) {
                     if (isCurrent) {
-                        return i18n("Die Uhr verwendet derzeit diese Zeitzone.");
+                        return i18n("Clock is currently using this time zone");
                     } else if (isIdenticalToLocal) {
-                        return i18nc("@label Diese Zeitzone entspricht der lokalen Zeitzone und wird ausgeblendet", "Diese Zeitzone wird ausgeblendet, da es sich um die Stadt Ihrer lokalen Zeitzone handelt.");
+                        return i18nc("@label This list item shows a time zone city name that is identical to the local time zone's city, and will be hidden in the timezone display in the plasmoid's popup", "Hidden while this is the local time zone's city");
                     }
                 }
                 return "";
@@ -89,6 +91,7 @@ KCMUtils.ScrollViewKCM {
 
                 Kirigami.TitleSubtitle {
                     Layout.fillWidth: true
+
                     opacity: timeZoneListItem.isIdenticalToLocal ? 0.6 : 1.0
 
                     title: timeZoneListItem.text
@@ -99,7 +102,7 @@ KCMUtils.ScrollViewKCM {
 
                 QQC2.Button {
                     visible: model.isLocalTimeZone && KAuthorized.authorizeControlModule("kcm_clock.desktop")
-                    text: i18n("Systemweite Zeitzone ändern…")
+                    text: i18n("Switch Systemwide Time Zone…")
                     icon.name: "preferences-system-time"
                     font.bold: false
                     onClicked: KCMUtils.KCMLauncher.openSystemSettings("kcm_clock")
@@ -111,7 +114,7 @@ KCMUtils.ScrollViewKCM {
                     font.bold: false
                     onClicked: model.checked = false;
                     QQC2.ToolTip {
-                        text: i18n("Diese Zeitzone entfernen")
+                        text: i18n("Remove this time zone")
                     }
                 }
             }
@@ -121,20 +124,20 @@ KCMUtils.ScrollViewKCM {
             property: "isLocalTimeZone"
             delegate: Kirigami.ListSectionHeader {
                 width: configuredTimezoneList.width
-                label: section === "true" ? i18n("Systemweite Zeitzone") : i18n("Weitere Zeitzonen")
+                label: section === "true" ? i18n("Systemwide Time Zone") : i18n("Additional Time Zones")
             }
         }
 
         Kirigami.PlaceholderMessage {
             visible: configuredTimezoneList.count === 1
             anchors {
-                top: parent.verticalCenter
+                top: parent.verticalCenter // Visual offset for system timezone and header
                 left: parent.left
                 right: parent.right
                 leftMargin: Kirigami.Units.largeSpacing * 6
                 rightMargin: Kirigami.Units.largeSpacing * 6
             }
-            text: i18n("Bitte fügen Sie weitere Zeitzonen hinzu, um alle im Pop-up des Applets anzuzeigen, oder wählen Sie eine davon für die Uhr aus.")
+            text: i18n("Add more time zones to display all of them in the applet's pop-up, or use one of them for the clock itself")
         }
     }
 
@@ -142,8 +145,8 @@ KCMUtils.ScrollViewKCM {
         spacing: Kirigami.Units.smallSpacing
 
         QQC2.Button {
-            Layout.alignment: Qt.AlignLeft
-            text: i18n("Zeitzonen hinzufügen…")
+            Layout.alignment: Qt.AlignLeft // Explicitly set so it gets reversed for LTR mode
+            text: i18n("Add Time Zones…")
             icon.name: "list-add"
             onClicked: timezoneSheet.open()
         }
@@ -153,14 +156,14 @@ KCMUtils.ScrollViewKCM {
             enabled: configuredTimezoneList.count > 1
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing
-            text: i18n("Angezeigte Zeitzone durch Scrollen über das Uhr-Applet wechseln")
+            text: i18n("Switch displayed time zone by scrolling over clock applet")
         }
 
         QQC2.Label {
             Layout.fillWidth: true
             Layout.leftMargin: Kirigami.Units.largeSpacing * 2
             Layout.rightMargin: Kirigami.Units.largeSpacing * 2
-            text: i18n("Die Nutzung dieser Funktion ändert die systemweite Zeitzone nicht. Wenn Sie reisen, ändern Sie bitte stattdessen die systemweite Zeitzone.")
+            text: i18n("Using this feature does not change the systemwide time zone. When you travel, switch the systemwide time zone instead.")
             font: Kirigami.Theme.smallFont
             wrapMode: Text.Wrap
         }
@@ -168,6 +171,7 @@ KCMUtils.ScrollViewKCM {
 
     Kirigami.OverlaySheet {
         id: timezoneSheet
+
         parent: timeZonesPage.QQC2.Overlay.overlay
 
         onVisibleChanged: {
@@ -181,7 +185,7 @@ KCMUtils.ScrollViewKCM {
         header: ColumnLayout {
             Kirigami.Heading {
                 Layout.fillWidth: true
-                text: i18n("Weitere Zeitzonen hinzufügen")
+                text: i18n("Add More Timezones")
                 wrapMode: Text.Wrap
             }
             Kirigami.SearchField {
@@ -192,7 +196,7 @@ KCMUtils.ScrollViewKCM {
                 id: messageWidget
                 Layout.fillWidth: true
                 type: Kirigami.MessageType.Warning
-                text: i18n("Bitte aktivieren Sie mindestens eine Zeitzone. Ihre lokale Zeitzone wurde automatisch aktiviert.")
+                text: i18n("At least one time zone needs to be enabled. Your local timezone was enabled automatically.")
                 showCloseButton: true
             }
         }
@@ -203,8 +207,8 @@ KCMUtils.ScrollViewKCM {
         }
 
         ListView {
-            focus: true
-            activeFocusOnTab: true
+            focus: true // keyboard navigation
+            activeFocusOnTab: true // keyboard navigation
             clip: true
             implicitWidth: Math.max(timeZonesPage.width/2, Kirigami.Units.iconSizes.small * 25)
 
@@ -216,13 +220,14 @@ KCMUtils.ScrollViewKCM {
             delegate: QQC2.CheckDelegate {
                 required property int index
                 required property var model
+
                 required checked
                 required property string city
                 required property string comment
                 required property string region
 
                 width: ListView.view.width
-                focus: true
+                focus: true // keyboard navigation
                 text: {
                     if (!city || city.indexOf("UTC") === 0) {
                         return comment;
@@ -235,8 +240,9 @@ KCMUtils.ScrollViewKCM {
 
                 onToggled: {
                     model.checked = checked
-                    ListView.view.currentIndex = index
-                    ListView.view.forceActiveFocus()
+
+                    ListView.view.currentIndex = index // highlight
+                    ListView.view.forceActiveFocus() // keyboard navigation
                 }
                 highlighted: ListView.isCurrentItem
             }

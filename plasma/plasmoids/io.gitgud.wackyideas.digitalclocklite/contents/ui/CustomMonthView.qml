@@ -257,13 +257,13 @@
                  id: heading
                  text: {
                     if(swipeView.currentIndex == 0)
-                        return i18ndc("libplasma5", "Format: Monat Jahr", "%1, %2", root.selectedMonth, root.selectedYear.toString());
+                        return i18ndc("libplasma5", "Format: month year", "%1, %2", root.selectedMonth, root.selectedYear.toString());
                     else if(swipeView.currentIndex == 1)
-                        return i18ndc("libplasma5", "Format: Jahr", "%1", root.selectedYear.toString());
+                        return i18ndc("libplasma5", "Format: year", "%1", root.selectedYear.toString());
                     else if(swipeView.currentIndex == 2) {
                         var decade = root.selectedYear - root.selectedYear % 10;
                         var nextDecade = decade+9;
-                        return i18ndc("libplasma5", "Format: Jahr-Jahr", "%1-%2", decade.toString(), nextDecade.toString());
+                        return i18ndc("libplasma5", "Format: year-year", "%1-%2", decade.toString(), nextDecade.toString());
                     }
 
                  }

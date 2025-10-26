@@ -540,8 +540,8 @@ if(y + root.height >= availableScreenGeometry.y + availScreen.height) {
 						anchors.fill: holidaysView
 						horizontalAlignment: Text.AlignHCenter
 						//anchors.rightMargin: Kirigami.Units.largeSpacing
-						text: monthView.isToday(monthView.currentDate) ? i18n("Keine Ereignisse für heute") + "\n"
-						: i18n("Keine Ereignisse für heute") + "\n";
+						text: monthView.isToday(monthView.currentDate) ? i18n("No events for today") + "\n"
+						: i18n("No events for this day") + "\n";
 						level: 5
 						opacity: 0.8
 						visible: holidaysList.count == 0
@@ -590,7 +590,7 @@ if(y + root.height >= availableScreenGeometry.y + availScreen.height) {
 				}
 
 				horizontalAlignment: Text.AlignHCenter
-				text: "Datum- und Uhrzeiteinstellungen ändern..."
+				text: "Change date and time settings..."
 				color: "#0066cc" //heading_ma.containsPress ? "#90e7ff" : (heading_ma.containsMouse ? "#b6ffff" : Kirigami.Theme.textColor)
 				font.underline: link_ma.containsMouse
 				level: 5
