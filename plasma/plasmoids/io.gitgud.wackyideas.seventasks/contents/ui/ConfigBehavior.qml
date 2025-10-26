@@ -49,16 +49,16 @@ KCM.SimpleKCM {
 
         ComboBox {
             id: groupingStrategy
-            Kirigami.FormData.label: i18n("Gruppierung:")
+            Kirigami.FormData.label: i18n("Group:")
             Layout.fillWidth: true
             Layout.minimumWidth: Kirigami.Units.iconSizes.small * 14
-            model: [i18n("Nicht gruppieren"), i18n("Nach Programmname")]
+            model: [i18n("Do not group"), i18n("By program name")]
             visible: false
         }
 
         ComboBox {
             id: groupedTaskVisualization
-            Kirigami.FormData.label: i18n("Click auf gruppierten Task:")
+            Kirigami.FormData.label: i18n("Clicking grouped task:")
             Layout.fillWidth: true
             Layout.minimumWidth: Kirigami.Units.iconSizes.small * 14
 
@@ -66,10 +66,10 @@ KCM.SimpleKCM {
             visible: false
 
             model: [
-                i18nc("Vervollständigt den Satz 'Clicking grouped task cycles through tasks' ", "Wechselt durch Tasks"),
-                i18nc("Vervollständigt den Satz 'Clicking grouped task shows tooltip window thumbnails' ", "Zeigt kleine Fensterpreviews"),
-                i18nc("Vervollständigt den Satz 'Clicking grouped task shows windows side by side' ", "Zeigt große Fensterpreviews"),
-                i18nc("Vervollständigt den Satz 'Clicking grouped task shows textual list' ", "Zeigt eine Textliste an"),
+                i18nc("Completes the sentence 'Clicking grouped task cycles through tasks' ", "Cycles through tasks"),
+                i18nc("Completes the sentence 'Clicking grouped task shows tooltip window thumbnails' ", "Shows small window previews"),
+                i18nc("Completes the sentence 'Clicking grouped task shows windows side by side' ", "Shows large window previews"),
+                i18nc("Completes the sentence 'Clicking grouped task shows textual list' ", "Shows textual list"),
             ]
 
             Accessible.name: currentText
@@ -80,14 +80,14 @@ KCM.SimpleKCM {
             Layout.fillWidth: true
             visible: groupedTaskVisualization.currentIndex === 2 && !effectWatcher.registered
             type: Kirigami.MessageType.Warning
-            text: i18n("Der Compositor unterstützt die Anzeige von Fenstern nebeneinander nicht, daher wird stattdessen eine Textliste angezeigt.")
+            text: i18n("The compositor does not support displaying windows side by side, so a textual list will be displayed instead.")
         }
 
 
         CheckBox {
             id: onlyGroupWhenFull
             visible: !iconsOnly //(Plasmoid.pluginName !== "org.kde.plasma.icontasks")
-            text: i18n("Gruppieren wenn der Task Manager voll ist")
+            text: i18n("Group only when the Task Manager is full")
             enabled: groupingStrategy.currentIndex > 0 && groupPopups.checked
             Accessible.onPressAction: toggle()
         }
@@ -102,25 +102,25 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Sort:")
             Layout.fillWidth: true
             Layout.minimumWidth: Kirigami.Units.iconSizes.small * 14
-            model: [i18n("Nicht sortieren"), i18n("Manuell"), i18n("Alphabetisch"), i18n("Nach Desktop"), i18n("Nach Aktivität")]
+            model: [i18n("Do not sort"), i18n("Manually"), i18n("Alphabetically"), i18n("By desktop"), i18n("By activity")]
         }
 
         CheckBox {
             id: groupPopups
             //visible: !iconsOnly//(Plasmoid.pluginName !== "org.kde.plasma.icontasks")
-            text: i18n("Tasks gruppieren")
+            text: i18n("Group tasks together")
         }
         CheckBox {
             id: separateLaunchers
             visible: !iconsOnly//(Plasmoid.pluginName !== "org.kde.plasma.icontasks")
-            text: i18n("Launcher getrennt halten")
+            text: i18n("Keep launchers separate")
             enabled: sortingStrategy.currentIndex == 1
         }
 
         CheckBox {
             id: hideLauncherOnStart
             visible: !iconsOnly//(Plasmoid.pluginName !== "org.kde.plasma.icontasks")
-            text: i18n("Launcher nach Start verstecken")
+            text: i18n("Hide launchers after application startup")
         }
 
         Item {
@@ -130,19 +130,19 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: minimizeActive
-            Kirigami.FormData.label: i18nc("Teil eines Satzes: 'Clicking active task minimizes the task'", "Beim Anklicken einer aktiven Task:")
-            text: i18nc("Part of a sentence: 'Clicking active task minimizes the task'", "Minimieren")
+            Kirigami.FormData.label: i18nc("Part of a sentence: 'Clicking active task minimizes the task'", "Clicking active task:")
+            text: i18nc("Part of a sentence: 'Clicking active task minimizes the task'", "Minimizes the task")
         }
 
         ComboBox {
             id: middleClickAction
-            Kirigami.FormData.label: i18n("Mittelklick auf Task:")
+            Kirigami.FormData.label: i18n("Middle-clicking any task:")
             Layout.fillWidth: true
             Layout.minimumWidth: Kirigami.Units.iconSizes.small * 14
             model: [
-                i18nc("Part of a sentence: 'Middle-clicking any task does nothing'", "Nichts"),
-                i18nc("Part of a sentence: 'Middle-clicking any task closes window or group'", "Schließt Fenster oder Gruppe"),
-                i18nc("Part of a sentence: 'Middle-clicking any task opens a new window'", "Öffnet ein neues Fenster"),
+                i18nc("Part of a sentence: 'Middle-clicking any task does nothing'", "Does nothing"),
+                i18nc("Part of a sentence: 'Middle-clicking any task closes window or group'", "Closes window or group"),
+                i18nc("Part of a sentence: 'Middle-clicking any task opens a new window'", "Opens a new window"),
                 i18nc("Part of a sentence: 'Middle-clicking any task minimizes/restores window or group'", "Minimizes/Restores window or group"),
                 i18nc("Part of a sentence: 'Middle-clicking any task toggles grouping'", "Toggles grouping"),
                 i18nc("Part of a sentence: 'Middle-clicking any task brings it to the current virtual desktop'", "Brings it to the current virtual desktop")
@@ -156,8 +156,8 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: wheelEnabled
-            Kirigami.FormData.label: i18nc("Part of a sentence: 'Mouse wheel cycles through tasks'", "Mausrad:")
-            text: i18nc("Part of a sentence: 'Mouse wheel cycles through tasks'", "Wechselt durch Tasks")
+            Kirigami.FormData.label: i18nc("Part of a sentence: 'Mouse wheel cycles through tasks'", "Mouse wheel:")
+            text: i18nc("Part of a sentence: 'Mouse wheel cycles through tasks'", "Cycles through tasks")
             visible: false
         }
 
@@ -168,7 +168,7 @@ KCM.SimpleKCM {
             Item { implicitWidth: Kirigami.Units.iconSizes.small }
             CheckBox {
                 id: wheelSkipMinimized
-                text: i18n("Überspringe minimierte Tasks")
+                text: i18n("Skip minimized tasks")
                 enabled: wheelEnabled.checked
             }
         }
@@ -179,23 +179,23 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: showOnlyCurrentScreen
-            Kirigami.FormData.label: i18n("Tasks anzeigen von:")
-            text: i18n("Aktuellem Bildschirm")
+            Kirigami.FormData.label: i18n("Show only tasks:")
+            text: i18n("From current screen")
         }
 
         CheckBox {
             id: showOnlyCurrentDesktop
-            text: i18n("Aktuellem Desktop")
+            text: i18n("From current desktop")
         }
 
         CheckBox {
             id: showOnlyCurrentActivity
-            text: i18n("Aktueller Aktivität")
+            text: i18n("From current activity")
         }
 
         CheckBox {
             id: showOnlyMinimized
-            text: i18n("Nur minimierte")
+            text: i18n("That are minimized")
         }
 
         Item {
@@ -204,8 +204,8 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: unhideOnAttention
-            Kirigami.FormData.label: i18n("Wenn das Panel versteckt ist:")
-            text: i18n("Einblenden, wenn ein Fenster Aufmerksamkeit erfordert")
+            Kirigami.FormData.label: i18n("When panel is hidden:")
+            text: i18n("Unhide when a window wants attention")
         }
 
         Item {
@@ -217,17 +217,17 @@ KCM.SimpleKCM {
         }
 
         RadioButton {
-            Kirigami.FormData.label: i18n("Neue Task startet:")
+            Kirigami.FormData.label: i18n("New tasks appear:")
             checked: !reverseMode.checked
             text: {
                 if (Plasmoid.formFactor === PlasmaCore.Types.Vertical) {
-                    return i18n("Unten")
+                    return i18n("On the bottom")
                 }
                 // horizontal
                 if (Qt.application.layoutDirection === Qt.LeftToRight) {
-                    return i18n("Rechts");
+                    return i18n("To the right");
                 } else {
-                    return i18n("Links")
+                    return i18n("To the left")
                 }
             }
             ButtonGroup.group: reverseModeRadioButtonGroup
@@ -239,13 +239,13 @@ KCM.SimpleKCM {
             checked: Plasmoid.configuration.reverseMode === true
             text: {
                 if (Plasmoid.formFactor === PlasmaCore.Types.Vertical) {
-                    return i18n("Oben")
+                    return i18n("On the Top")
                 }
                 // horizontal
                 if (Qt.application.layoutDirection === Qt.LeftToRight) {
-                    return i18n("Links");
+                    return i18n("To the left");
                 } else {
-                    return i18n("Rechts");
+                    return i18n("To the right");
                 }
             }
             ButtonGroup.group: reverseModeRadioButtonGroup

@@ -59,38 +59,38 @@ KCM.SimpleKCM {
 
             Layout.fillWidth: true
 
-            title: i18n("Fenstervorschau")
+            title: i18n("Window previews")
 
             ColumnLayout {
                 anchors.fill: parent
 
                 CheckBox {
                     id: showPreviews
-                    text: i18n("Aktiviert")
+                    text: i18n("Enabled")
                 }
                 CheckBox {
                     id: highlightWindows
-                    text: i18n("Window Peek verwenden, um eine einzelne Anwendung zu zeigen")
+                    text: i18n("Use Window Peek to peek at a single application")
                     enabled: showPreviews.checked
                 }
                 RowLayout {
                     Text {
-                        text: i18n("Ausrichtung der Beschriftung:")
+                        text: i18n("Caption alignment:")
                     }
                     ComboBox {
                         id: thmbnlCaptionAlignment
                         enabled: showPreviews.checked
                         model: [
-                            i18n("Links"),
-                            i18n("Mitte"),
-                            i18n("Rechts")
+                            i18n("Left"),
+                            i18n("Center"),
+                            i18n("Right")
                         ]
                         currentIndex: Plasmoid.configuration.thmbnlCaptionAlignment
                     }
                 }
                 CheckBox {
                     id: showMuteBtn
-                    text: i18n("Stummschalten-Button anzeigen, wenn eine App Audio abspielt")
+                    text: i18n("Show mute button when an app is playing audio")
                 }
             }
         }
@@ -100,22 +100,22 @@ KCM.SimpleKCM {
 
             Layout.fillWidth: true
 
-            title: i18n("Allgemein")
+            title: i18n("General")
 
             ColumnLayout {
                 anchors.fill: parent
 
                 CheckBox {
                     id: showLabels
-                    text: i18n("Beschriftung neben Task-Icons anzeigen")
+                    text: i18n("Show labels next to task icons")
                 }
                 CheckBox {
                     id: disableHottracking
-                    text: i18n("Hot-Tracking deaktivieren")
+                    text: i18n("Disable hot tracking")
                 }
                 CheckBox {
                     id: disableJumplists
-                    text: i18n("Traditionelle Menüs statt Jumplists verwenden")  // Use traditional context menus instead of jumplists
+                    text: i18n("Use traditional context menus instead of jumplists")
                 }
             }
         }
