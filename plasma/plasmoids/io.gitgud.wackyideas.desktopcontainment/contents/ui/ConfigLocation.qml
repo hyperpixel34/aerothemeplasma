@@ -77,23 +77,23 @@ Item {
         RadioButton {
             id: locationDesktop
 
-            Kirigami.FormData.label: i18n("Anzeigen:")
+            Kirigami.FormData.label: i18n("Show:")
 
-            text: i18n("Desktopordner")
+            text: i18n("Desktop folder")
         }
 
         RadioButton {
             id: locationCurrentActivity
             visible: placesModel.activityLinkingEnabled
 
-            text: i18n("Mit der aktuellen Aktivität verknüpfte Dateien")
+            text: i18n("Files linked to the current activity")
         }
 
         RowLayout {
             RadioButton {
                 id: locationPlace
 
-                text: i18n("Orte-Panel:")
+                text: i18n("Places panel item:")
 
                 onCheckedChanged: {
                     locationPlaceValue.enabled = checked;
@@ -126,7 +126,7 @@ Item {
             RadioButton {
                 id: locationCustom
 
-                text: i18n("Benutzerdefinierter Ort:")
+                text: i18n("Custom location:")
             }
 
             TextField {
@@ -134,7 +134,7 @@ Item {
                 enabled: locationCustom.checked
                 Layout.fillWidth: true
 
-                placeholderText: i18n("Pfad oder URL…")
+                placeholderText: i18n("Type path or URL…")
 
                 inputMethodHints: Qt.ImhNoPredictiveText
 
@@ -177,9 +177,9 @@ Item {
             id: labelMode
             visible: titleVisible
 
-            Kirigami.FormData.label: i18n("Titel:")
+            Kirigami.FormData.label: i18n("Title:")
 
-            model: [i18n("Kein"), i18n("Standard"), i18n("Ganzer Pfad"), i18n("Benutzerdefinierter Titel")]
+            model: [i18n("None"), i18n("Default"), i18n("Full path"), i18n("Custom title")]
         }
 
         RowLayout {
@@ -194,7 +194,7 @@ Item {
                 Layout.fillWidth: true
                 enabled: (labelMode.currentIndex === 3)
 
-                placeholderText: i18n("Benutzerdefinierten Titel eingeben…")
+                placeholderText: i18n("Enter custom title…")
             }
         }
     }

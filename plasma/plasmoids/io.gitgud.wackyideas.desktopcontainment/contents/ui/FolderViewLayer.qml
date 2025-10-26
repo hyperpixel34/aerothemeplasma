@@ -358,13 +358,13 @@ FocusScope {
 
     PlasmaCore.Action {
         id: viewPropertiesAction
-        text: i18n("Ansicht")
+        text: i18n("View")
         //icon.name: ""
         menu: viewPropertiesMenu.menu
     }
     PlasmaCore.Action {
         id: viewSortMenu
-        text: i18n("Sortieren nach")
+        text: i18n("Sort by")
         //icon.name: ""
         menu: viewPropertiesMenu.sortMenu
     }
