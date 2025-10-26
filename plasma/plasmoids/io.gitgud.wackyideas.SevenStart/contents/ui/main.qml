@@ -251,7 +251,7 @@ PlasmoidItem {
 
     Plasmoid.contextualActions: [
         PlasmaCore.Action {
-            text: i18n("Anwendungen bearbeiten...")
+            text: i18n("Edit Applications...")
             icon.name: "application-menu"
             onTriggered:  menu_executable.exec("kstart kmenuedit");
         },

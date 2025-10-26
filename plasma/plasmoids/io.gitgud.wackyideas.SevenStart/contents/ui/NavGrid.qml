@@ -72,7 +72,7 @@ FocusScope {
   Text {
     id: noResults
     opacity: 0.6
-    text: "Es wurden keine Suchergebnisse gefunden."
+    text: "No items match your search."
     anchors.fill: parent
     anchors.topMargin: 13
     horizontalAlignment: Text.AlignHCenter
