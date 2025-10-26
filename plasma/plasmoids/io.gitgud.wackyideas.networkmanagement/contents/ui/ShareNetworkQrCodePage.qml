@@ -29,7 +29,7 @@ ColumnLayout {
         wrapMode: Text.WordWrap
         horizontalAlignment: Text.AlignHCenter
         textFormat: Text.PlainText
-        text: i18n("Scannen Sie diesen QR-Code mit einem anderen Gerät, um eine Verbindung mit dem Netzwerk \"%1\" herzustellen.", page.ssid)
+        text: i18n("Scan this QR code with another device to connect to the \"%1\" network.", page.ssid)
     }
 
     Prison.Barcode {

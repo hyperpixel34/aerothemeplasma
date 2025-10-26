@@ -24,7 +24,7 @@ ColumnLayout {
     spacing: Kirigami.Units.largeSpacing
 
     property var connectionModel: null
-    Accessible.description: i18nc("@info:tooltip", "Aktuelle Downloadgeschwindigkeit beträgt %1 Kibibytes pro Sekunde; Aktuelle Uploadgeschwindigkeit beträgt %2 Kibibytes pro Sekunde", Math.round(download.value / 1024), Math.round(upload.value / 1024))
+    Accessible.description: i18nc("@info:tooltip", "Current download speed is %1 kibibytes per second; current upload speed is %2 kibibytes per second", Math.round(download.value / 1024), Math.round(upload.value / 1024))
 
     property string networkName: ""
     property string uuid: ""
