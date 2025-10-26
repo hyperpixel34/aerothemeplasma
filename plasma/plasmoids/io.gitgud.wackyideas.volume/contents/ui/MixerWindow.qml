@@ -71,7 +71,7 @@ Window {
         mixer.destroy();
     }
 
-    title: "Lautstärkemixer" + (paSinkFilterModelDefault.defaultSinkName !== "" ? " - " + paSinkFilterModelDefault.defaultSinkName: "")
+    title: "Volume Mixer" + (paSinkFilterModelDefault.defaultSinkName !== "" ? " - " + paSinkFilterModelDefault.defaultSinkName: "")
 
     component CustomGroupBox: QQC2.GroupBox {
         id: gbox
@@ -110,7 +110,7 @@ Window {
         CustomGroupBox {
             id: speaker
 
-            title: "Gerät"
+            title: "Device"
 
             Layout.fillHeight: true
             Layout.preferredWidth: sinkList.width +
@@ -172,7 +172,7 @@ Window {
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            title: "Anwendungen"
+            title: "Applications"
 
             QQC2.ScrollView {
                 anchors.fill: parent
